@@ -1,0 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
+/*   Updated: 2024/03/01 16:23:51 by djin             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <string.h>
+# include <errno.h>
+# include <mlx.h>
+# include "libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
+
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
+# define TITLE "so_long"
+
+typedef struct s_player
+{
+	int	pp[2];
+	int	step;
+}	t_player;
+
+typedef struct s_so_long
+{
+	void		*mlx;
+	void		*win;
+	int			map_fd;
+	char		**map;
+	t_list		*lst_map;
+	t_player	*player;
+}	t_so_long;
+
+//initialize
+void	init_s_so_long(t_so_long *so_long, char **argv);
+
+#endif
