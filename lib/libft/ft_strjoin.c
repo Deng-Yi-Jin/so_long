@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:04:22 by djin              #+#    #+#             */
-/*   Updated: 2023/05/10 18:20:26 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 18:34:19 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*join;
 	int		i;
-	int		j;
-	char	*str;
+	int		len1;
+	int		len2;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + 1) + (ft_strlen(s2) + 1));
-	if (!str)
+	len1 = ft_strlen((char *) s1);
+	len2 = ft_strlen((char *) s2);
+	join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!join)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
-		str[i + j] = s2[j];
-		j++;
-	}
-	str[i + j] = '\0';
-	return (str);
+	i = -1;
+	while (++i < len1)
+		join[i] = s1[i];
+	i = -1;
+	while (++i < len2)
+		join[len1 + i] = s2[i];
+	join[len1 + i] = '\0';
+	free((void *)s1);
+	return (join);
 }
 
 // int	main(void)

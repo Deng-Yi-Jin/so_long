@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 15:27:01 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 18:43:36 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <errno.h>
 # include <mlx.h>
 # include "libft.h"
-# include "get_next_line.h"
 # include "ft_printf.h"
 
+# define BUFFER_SIZE 42
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define FAIL_MAP "Invalid map"
@@ -46,6 +46,9 @@ typedef struct s_so_long
 	t_list		*lst_map;
 	t_player	*player;
 }	t_so_long;
+
+//get_next_line
+char		*get_next_line(int fd);
 
 //initialize
 void	init_s_so_long(t_so_long *so_long, char **argv);

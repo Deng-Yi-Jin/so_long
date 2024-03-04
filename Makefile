@@ -1,20 +1,22 @@
 # NAME = so_long
 CC = gcc
 CFLAGS = -fsanitize=address -Wall -Wextra -Werror -ggdb
-INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/GetNextLine/Mandatory -Ilib/minilibx_macos
+INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos
 
 # Source files
 SCRS_DIR = srcs
 MAIN_DIR = main
 UTILS_DIR = utils
+GNL_DIR = GetNextLine
 SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c) \
 						 $(addprefix $(UTILS_DIR)/, error.c map_checker.c map_utils.c parse_check.c) \
+						 $(addprefix $(GNL_DIR)/, get_next_line.c)
 
 SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
 # Object files
 OBJS_DIR = objs
-OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR)
+OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) $(OBJS_DIR)/$(GNL_DIR)
 OBJS_FILES = $(patsubst %.c,%.o,$(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_DIR)/,$(OBJS_FILES))
 
@@ -25,13 +27,11 @@ LIBFT = $(LIBFT_DIR)/libft.a
 PRINF_DIR = lib/ft_printf
 PRINTF = $(PRINF_DIR)/libftprintf.a
 
-GNL_DIR = lib/GetNextLine
-GNL = $(GNL_DIR)/gnl.a
 # MINILIBX_DIR = lib/minilibx
 # MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-LIBS = -L$(LIBFT_DIR) -L$(PRINF_DIR) -L$(GNL_DIR) -lft -lftprintf
+LIBS = -L$(LIBFT_DIR) -L$(PRINF_DIR) -lft -lftprintf
 
 #Binary
 NAME = so_long
@@ -56,6 +56,9 @@ $(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL)
 		@echo "$(YELLOW)Compiling $(NAME)$(NC)"
 		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
 		@echo "$(GREEN)$(BOLD)$(NAME) has been created$(NC)"
+		@echo " /\_/\ "
+		@echo "( o.o )"
+		@echo " > ^ <"
 
 $(OBJS_DIR)/%.o: $(SCRS_DIR)/%.c
 		@mkdir -p $(OBJS_DIRS)
@@ -70,26 +73,21 @@ $(PRINTF):
 		@echo "$(YELLOW)Compiling ft_printf...$(RESET)"
 		@make -C $(PRINF_DIR) -s
 
-$(GNL):
-		@echo "$(YELLOW)Compiling GetNextLine...$(RESET)"
-		@make -C $(GNL_DIR) -s
-
-$(MINILIBX):
-		@echo "$(YELLOW)Compiling minilibx...$(RESET)"
-
 clean:
 		@echo "$(RED)Cleaning objects...$(NC)"
 		@rm -rf $(OBJS_DIR)
 		@make -C $(LIBFT_DIR) clean -s
 		@make -C $(PRINF_DIR) clean -s
-		@make -C $(GNL_DIR) clean -s
 
 fclean: clean
 		@echo "$(RED)Cleaning $(NAME)...$(NC)"
 		@rm -f $(NAME)
 		@make -C $(LIBFT_DIR) fclean -s
 		@make -C $(PRINF_DIR) fclean -s
-		@make -C $(GNL_DIR) fclean -s
+		@echo " /\_/\ "
+		@echo "( o.o )"
+		@echo " > ^ <"
+		@echo "$(RED)$(BOLD)$(NAME) has been deleted$(NC)"
 
 re: fclean all
 
