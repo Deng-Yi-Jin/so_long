@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/01 16:23:51 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 15:27:01 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
+# define FAIL_MAP "Invalid map"
+# define WALL_FAIL "Invalid wall"
+
 # define TITLE "so_long"
 
 typedef struct s_player
@@ -46,5 +49,20 @@ typedef struct s_so_long
 
 //initialize
 void	init_s_so_long(t_so_long *so_long, char **argv);
+void	init_map(int argc, char **argv, t_so_long *so_long);
 
+//parse_check
+bool	argc_check(int argc);
+bool	open_map(char *argv, t_so_long *so_long);
+int		add_lst_map(t_so_long *so_long);
+
+//error
+void	error(char *message);
+
+//map_utils
+bool	convert_lst_to_map(t_so_long *so_long, int line_count);
+
+
+//map_checker
+bool	lst_line_wall_check(t_so_long *so_long, int line_count);
 #endif

@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 13:27:10 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 13:59:21 by djin             ###   ########.fr       */
+/*   Created: 2024/03/04 14:20:49 by djin              #+#    #+#             */
+/*   Updated: 2024/03/04 14:21:12 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-// #include <stdio.h>
 
-int	main(int argc, char **argv, char **envp)
+void	error(char *message)
 {
-	t_so_long	so_long;
-
-	(void)envp;
-	if (argc != 2)
-	{
-		ft_printf("Error\nInvalid number of arguments\n");
-		return (1);
-	}
-	init_s_so_long(&so_long, argv);
-	
-	mlx_loop(so_long.mlx);
-	free(so_long.player);
-	exit(EXIT_SUCCESS);
+	ft_printf("Error\n%s\n", message);
+	exit(EXIT_FAILURE);
 }

@@ -22,8 +22,8 @@ OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS_MAIN) 
-		 $(ARRC) $(NAME) $(OBJS_MAIN)
+$(NAME): $(OBJS_MAIN) $(OBJS_BONUS)
+		 $(ARRC) $(NAME) $(OBJS_MAIN) $(OBJS_BONUS)
 bonus: $(OBJS_MAIN) $(OBJS_BONUS)
 		$(ARRC) $(NAME) $(OBJS_BONUS)
 clean:

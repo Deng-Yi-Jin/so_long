@@ -8,7 +8,7 @@ SCRS_DIR = srcs
 MAIN_DIR = main
 UTILS_DIR = utils
 SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c) \
-						 $(addprefix $(UTILS_DIR)/, utils.c) \
+						 $(addprefix $(UTILS_DIR)/, error.c map_checker.c map_utils.c parse_check.c) \
 
 SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
