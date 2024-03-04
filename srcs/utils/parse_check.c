@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:01:33 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 17:31:47 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 19:12:26 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	open_map(char *argv, t_so_long *so_long)
 {
 	int	path_len;
 
-	path_len = ft_strlen(argv);
+	path_len = ft_strlen(argv) + 1;
 	if (!ft_strncmp(&argv[path_len - 4], ".ber", 4))
 		return (false);
 	so_long->map_fd = open(argv, O_RDONLY);
@@ -39,11 +39,15 @@ int	add_lst_map(t_so_long *so_long)
 {
 	char	*line;
 	int		line_count;
+	bool	line_check;
 
+	line_check = true;
 	line = "";
 	line_count = 0;
-	while (line)
+	while (line_check == true || line != NULL)
 	{
+		if (line_check == true)
+			line_check = false;
 		line = get_next_line(so_long->map_fd);
 		if (!line)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:10 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 13:59:21 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 18:59:29 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	}
 	init_s_so_long(&so_long, argv);
-	
+	init_map(argc, argv, &so_long);
 	mlx_loop(so_long.mlx);
 	free(so_long.player);
 	exit(EXIT_SUCCESS);

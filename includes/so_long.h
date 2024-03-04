@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 18:43:36 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/04 19:01:11 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_so_long
 }	t_so_long;
 
 //get_next_line
-char		*get_next_line(int fd);
+char	*get_next_line(int fd);
 
 //initialize
 void	init_s_so_long(t_so_long *so_long, char **argv);
@@ -64,7 +64,6 @@ void	error(char *message);
 
 //map_utils
 bool	convert_lst_to_map(t_so_long *so_long, int line_count);
-
 
 //map_checker
 bool	lst_line_wall_check(t_so_long *so_long, int line_count);
