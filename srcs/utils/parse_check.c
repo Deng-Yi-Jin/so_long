@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:01:33 by djin              #+#    #+#             */
-/*   Updated: 2024/03/20 15:51:12 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/20 17:04:48 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	add_lst_map(t_so_long *so_long)
 	char	*line;
 	int		line_count;
 	bool	line_check;
+	t_list	*new_node;
 
+	if (so_long == NULL)
+		return (-1);
 	line_check = true;
 	line = "";
 	line_count = 0;
@@ -52,6 +55,12 @@ int	add_lst_map(t_so_long *so_long)
 		if (!line)
 			break ;
 		line_count++;
+		new_node = ft_lstnew(ft_strdup(line));
+		if (new_node == NULL)
+		{
+			free(line);
+			return (-1);
+		}
 		if (so_long->lst_map == NULL)
 			so_long->lst_map = ft_lstnew(ft_strdup(line));
 		else
