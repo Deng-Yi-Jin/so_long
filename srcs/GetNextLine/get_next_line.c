@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:41:00 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 18:39:36 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/20 17:55:35 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char	*read_txt(int fd, char *buff)
 	if (!tmp)
 		return (NULL);
 	count = 1;
-	while (count != 0 && !ft_strchr(buff, '\n'))
+	while (count != 0)
 	{
 		count = read(fd, tmp, BUFFER_SIZE);
 		if (count == -1)
@@ -83,6 +83,8 @@ static char	*read_txt(int fd, char *buff)
 		}
 		tmp[count] = '\0';
 		buff = ft_strjoin(buff, tmp);
+		if (ft_strchr(buff, '\n'))
+			break ;
 	}
 	free (tmp);
 	return (buff);

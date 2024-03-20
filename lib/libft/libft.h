@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 15:38:20 by djin              #+#    #+#             */
-/*   Updated: 2024/02/21 05:14:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/20 17:28:53 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
 
 char		*ft_strchr(const char *str, int c);
+
+int	ft_strcmp(const char *s1, const char *s2);
 
 char		*ft_strdup(const char *s);
 

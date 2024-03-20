@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:01:33 by djin              #+#    #+#             */
-/*   Updated: 2024/03/20 17:04:48 by geibo            ###   ########.fr       */
+/*   Updated: 2024/03/20 17:39:35 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ bool	open_map(char *argv, t_so_long *so_long)
 {
 	int	path_len;
 
-	path_len = ft_strlen(argv) + 1;
-	if (!ft_strncmp(&argv[path_len - 4], ".ber", 4))
+	path_len = ft_strlen(argv);
+	if (path_len < 4)
+		return (false);
+	if (ft_strcmp(&argv[path_len - 4], ".ber") != 0)
 		return (false);
 	so_long->map_fd = open(argv, O_RDONLY);
 	if (so_long->map_fd < 0)
@@ -45,7 +47,7 @@ int	add_lst_map(t_so_long *so_long)
 	if (so_long == NULL)
 		return (-1);
 	line_check = true;
-	line = "";
+	line = NULL;
 	line_count = 0;
 	while (line_check == true || line != NULL)
 	{
@@ -62,9 +64,9 @@ int	add_lst_map(t_so_long *so_long)
 			return (-1);
 		}
 		if (so_long->lst_map == NULL)
-			so_long->lst_map = ft_lstnew(ft_strdup(line));
+			so_long->lst_map = new_node;
 		else
-			ft_lstadd_back(&so_long->lst_map, ft_lstnew(ft_strdup(line)));
+			ft_lstadd_back(&so_long->lst_map, new_node);
 		free(line);
 	}
 	return (line_count);
