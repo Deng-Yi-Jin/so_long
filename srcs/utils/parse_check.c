@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:01:33 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 19:12:26 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/20 15:51:12 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	open_map(char *argv, t_so_long *so_long)
 	if (!ft_strncmp(&argv[path_len - 4], ".ber", 4))
 		return (false);
 	so_long->map_fd = open(argv, O_RDONLY);
-	if (!so_long->map_fd)
+	if (so_long->map_fd < 0)
 		return (false);
 	return (true);
 }
@@ -56,6 +56,7 @@ int	add_lst_map(t_so_long *so_long)
 			so_long->lst_map = ft_lstnew(ft_strdup(line));
 		else
 			ft_lstadd_back(&so_long->lst_map, ft_lstnew(ft_strdup(line)));
+		free(line);
 	}
 	return (line_count);
 }
