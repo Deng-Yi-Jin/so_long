@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 19:01:11 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/21 20:07:52 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 

@@ -2,6 +2,7 @@
 CC = gcc
 CFLAGS = -fsanitize=address -Wall -Wextra -Werror -ggdb
 INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos
+INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/include -Ilib/mlx_linux -O3
 
 # Source files
 SCRS_DIR = srcs
@@ -27,10 +28,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 PRINF_DIR = lib/ft_printf
 PRINTF = $(PRINF_DIR)/libftprintf.a
 
-# MINILIBX_DIR = lib/minilibx
-# MINILIBX = $(MINILIBX_DIR)/libmlx.a
+MLX_DIR = lib/mlx_linux
+MLX = $(MLX_DIR)/libmlx.a
 
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS_LINUX = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+
+# MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 LIBS = -L$(LIBFT_DIR) -L$(PRINF_DIR) -lft -lftprintf
 
 #Binary
@@ -52,9 +55,9 @@ YELLOW = \033[33m
 # Makefile rules
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL)
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL) $(MLX)
 		@echo "$(YELLOW)Compiling $(NAME)$(NC)"
-		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS_LINUX) -o $(NAME)
 		@echo "$(GREEN)$(BOLD)$(NAME) has been created$(NC)"
 		@echo " /\_/\ "
 		@echo "( o.o )"
@@ -64,6 +67,10 @@ $(OBJS_DIR)/%.o: $(SCRS_DIR)/%.c
 		@mkdir -p $(OBJS_DIRS)
 		@echo "$(BOLD)$(YELLOW)Compiling $<...$(RESET)"
 		@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(MLX):
+		@echo "$(YELLOW)Compiling mlx...$(RESET)"
+		@make -C $(MLX_DIR) -s
 
 $(LIBFT):
 		@echo "$(YELLOW)Compiling libft...$(RESET)"
