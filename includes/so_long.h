@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/26 13:53:25 by geibo            ###   ########.fr       */
+/*   Updated: 2024/03/26 17:28:47 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-// # include <mlx.h>
-# include "../lib/mlx_linux/mlx.h"
+# include <mlx.h>
+// # include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -32,6 +32,7 @@
 # define WALL_FAIL "Invalid wall"
 # define CHAR_FAIL "Invalid character"
 # define FAIL_IMG "Fail to generate image"
+# define OS "Linux"
 
 # define TITLE "so_long"
 
@@ -47,12 +48,21 @@ typedef struct s_map_cord
 	int		y;
 }	t_map_cord;
 
+typedef struct s_map_img
+{
+	void	*wall;
+	void	*coin;
+}	t_map_img;
+
 typedef struct s_so_long
 {
 	void		*mlx;
 	void		*win;
 	int			map_fd;
+	int			gh;
+	int			gw;
 	char		**map;
+	t_map_img	*map_img;
 	t_map_cord	*map_cord;
 	t_list		*lst_map;
 	t_player	*player;
@@ -77,8 +87,18 @@ void	error(char *message);
 bool	convert_lst_to_map(t_so_long *so_long, int line_count);
 bool	init_map_cord(t_so_long *so_long);
 bool	check_char_in_map(t_so_long *so_long);
-bool	image_gen(t_so_long *so_long);
+bool	init_map_img(t_so_long *so_long);
 
 //map_checker
 bool	lst_line_wall_check(t_so_long *so_long, int line_count);
+
+//sprite1
+void	load_sprite_type(char *type, t_so_long *so_long, char *path);
+char	*path_sprite(char *type);
+void	load_sprite(char *type, t_so_long *so_long);
+void	init_sprites(t_so_long *so_long);
+
+//sprite_type
+void	load_sprite_png(char *type, t_so_long *so_long, char *path);
+void	load_sprite_xpm(char *type, t_so_long *so_long, char *path);
 #endif

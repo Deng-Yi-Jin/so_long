@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:03:07 by djin              #+#    #+#             */
-/*   Updated: 2024/03/25 14:12:01 by geibo            ###   ########.fr       */
+/*   Updated: 2024/03/26 16:59:22 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 		error(CHAR_FAIL);
 	if (!init_map_cord(so_long))
 		error(FAIL_MAP);
-	
 	printf("OK\n");
 }
 
