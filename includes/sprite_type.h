@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sprite_type.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 13:27:10 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 13:43:49 by djin             ###   ########.fr       */
+/*   Created: 2024/03/27 13:15:14 by djin              #+#    #+#             */
+/*   Updated: 2024/03/27 13:18:55 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-// #include <stdio.h>
+#ifndef SPRITE_TYPE_H
+# define SPRITE_TYPE_H
 
-int	main(int argc, char **argv, char **envp)
-{
-	t_so_long	so_long;
+# include "so_long.h"
 
-	(void)envp;
-	if (argc != 2)
-	{
-		ft_printf("Error\nInvalid number of arguments\n");
-		return (1);
-	}
-	init_s_so_long(&so_long, argv);
-	init_map(argc, argv, &so_long);
-	init_sprites(&so_long);
-	mlx_loop(so_long.mlx);
-	free(so_long.player);
-	exit(EXIT_SUCCESS);
-}
+# define WALL 1
+# define PLAYER 2
+# define COIN 3
+# define EXIT 4
+
+#endif

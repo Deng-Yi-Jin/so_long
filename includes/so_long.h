@@ -6,13 +6,14 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/26 17:28:47 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/27 13:45:11 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -20,6 +21,7 @@
 # include <string.h>
 # include <errno.h>
 # include <mlx.h>
+# include "sprite_type.h"
 // # include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
@@ -62,7 +64,7 @@ typedef struct s_so_long
 	int			gh;
 	int			gw;
 	char		**map;
-	t_map_img	*map_img;
+	t_map_img	map_img;
 	t_map_cord	*map_cord;
 	t_list		*lst_map;
 	t_player	*player;
@@ -93,12 +95,12 @@ bool	init_map_img(t_so_long *so_long);
 bool	lst_line_wall_check(t_so_long *so_long, int line_count);
 
 //sprite1
-void	load_sprite_type(char *type, t_so_long *so_long, char *path);
-char	*path_sprite(char *type);
-void	load_sprite(char *type, t_so_long *so_long);
+void	load_sprite_type(t_so_long *so_long, char *path, int s_type);
+char	*path_sprite(int type);
+void	load_sprite(t_so_long *so_long, int s_type);
 void	init_sprites(t_so_long *so_long);
 
 //sprite_type
-void	load_sprite_png(char *type, t_so_long *so_long, char *path);
-void	load_sprite_xpm(char *type, t_so_long *so_long, char *path);
+void	load_sprite_png(t_so_long *so_long, char *path, int s_type);
+void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type);
 #endif
