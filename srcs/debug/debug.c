@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_type.c                                      :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 17:19:28 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 13:48:09 by geibo            ###   ########.fr       */
+/*   Created: 2024/03/27 14:30:53 by geibo             #+#    #+#             */
+/*   Updated: 2024/03/27 14:38:38 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type)
+void	print_map(t_so_long so_long)
 {
-	int	width;
-	int	height;
+	int	i;
+	int	j;
 
-	if (s_type == WALL)
+	i = 0;
+	j = 0;
+	while (i < so_long.gh)
 	{
-		so_long->map_img.wall = mlx_xpm_file_to_image(so_long->mlx, path, \
-		&width, &height);
+		j = 0;
+		while (j < so_long.gw)
+		{
+			ft_printf("%c", so_long.map[i][j]);
+			j++;
+		}
+		i++;
 	}
-	if (so_long->map_img.wall == NULL)
-		error("Fail to generate image");
+	ft_printf("\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 13:45:11 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/27 15:09:36 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "sprite_type.h"
-// # include "../lib/mlx_linux/mlx.h"
+# include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -35,6 +35,8 @@
 # define CHAR_FAIL "Invalid character"
 # define FAIL_IMG "Fail to generate image"
 # define OS "Linux"
+
+# define ESC 17
 
 # define TITLE "so_long"
 
@@ -103,4 +105,14 @@ void	init_sprites(t_so_long *so_long);
 //sprite_type
 void	load_sprite_png(t_so_long *so_long, char *path, int s_type);
 void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type);
+
+//wall
+void	draw_wall(t_so_long *so_long);
+void	wall(t_so_long *so_long);
+
+//debug
+void	print_map(t_so_long so_long);
+
+//hook
+int	key_hook(int keycode, t_so_long *so_long);
 #endif

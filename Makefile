@@ -1,15 +1,19 @@
 # NAME = so_long
 CC = gcc
 CFLAGS = -fsanitize=address -Wall -Wextra -Werror -ggdb
-INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos
-# INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/include -Ilib/mlx_linux -O3
+# INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos
+INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/include -Ilib/mlx_linux -O3
 
 # Source files
 SCRS_DIR = srcs
 MAIN_DIR = main
+SPRITE_DIR = sprite
+DEBUG_DIR = debug
 UTILS_DIR = utils
 GNL_DIR = GetNextLine
-SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c) \
+SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c hook.c) \
+						 $(addprefix $(DEBUG_DIR)/, debug.c) \
+						 $(addprefix $(SPRITE_DIR)/, wall.c) \
 						 $(addprefix $(UTILS_DIR)/, error.c map_checker.c map_utils.c parse_check.c sprite1.c sprite_type.c) \
 						 $(addprefix $(GNL_DIR)/, get_next_line.c)
 
@@ -17,7 +21,7 @@ SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
 # Object files
 OBJS_DIR = objs
-OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) $(OBJS_DIR)/$(GNL_DIR)
+OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) $(OBJS_DIR)/$(GNL_DIR) $(OBJS_DIR)/$(SPRITE_DIR) $(OBJS_DIR)/$(DEBUG_DIR)
 OBJS_FILES = $(patsubst %.c,%.o,$(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_DIR)/,$(OBJS_FILES))
 
@@ -55,21 +59,21 @@ YELLOW = \033[33m
 # Makefile rules
 all: $(NAME)
 
-# $(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL) $(MLX)
-# 		@echo "$(YELLOW)Compiling $(NAME)$(NC)"
-# 		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS_LINUX) -o $(NAME)
-# 		@echo "$(GREEN)$(BOLD)$(NAME) has been created$(NC)"
-# 		@echo " /\_/\ "
-# 		@echo "( o.o )"
-# 		@echo " > ^ <"
-
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL)
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL) $(MLX)
 		@echo "$(YELLOW)Compiling $(NAME)$(NC)"
-		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS_LINUX) -o $(NAME)
 		@echo "$(GREEN)$(BOLD)$(NAME) has been created$(NC)"
 		@echo " /\_/\ "
 		@echo "( o.o )"
 		@echo " > ^ <"
+
+# $(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(GNL)
+# 		@echo "$(YELLOW)Compiling $(NAME)$(NC)"
+# 		@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+# 		@echo "$(GREEN)$(BOLD)$(NAME) has been created$(NC)"
+# 		@echo " /\_/\ "
+# 		@echo "( o.o )"
+# 		@echo " > ^ <"
 
 $(OBJS_DIR)/%.o: $(SCRS_DIR)/%.c
 		@mkdir -p $(OBJS_DIRS)

@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_type.c                                      :+:      :+:    :+:   */
+/*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 17:19:28 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 13:48:09 by geibo            ###   ########.fr       */
+/*   Created: 2024/03/27 14:12:44 by geibo             #+#    #+#             */
+/*   Updated: 2024/03/27 16:20:27 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type)
+void	draw_wall(t_so_long *so_long)
 {
-	int	width;
-	int	height;
+	int	i;
+	int	j;
 
-	if (s_type == WALL)
+	i = 0;
+	j = 0;
+	while (i < so_long->gh)
 	{
-		so_long->map_img.wall = mlx_xpm_file_to_image(so_long->mlx, path, \
-		&width, &height);
+		j = 0;
+		while (j < so_long->gw)
+		{
+			if (so_long->map[i][j] == '1')
+				mlx_put_image_to_window(so_long->mlx, so_long->win, \
+				so_long->map_img.wall, j, i);
+			j++;
+		}
+		i++;
 	}
-	if (so_long->map_img.wall == NULL)
-		error("Fail to generate image");
+}
+
+void	wall(t_so_long *so_long)
+{
+	draw_wall(so_long);
 }
