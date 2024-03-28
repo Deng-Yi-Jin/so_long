@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:12:14 by geibo             #+#    #+#             */
-/*   Updated: 2024/03/27 13:35:26 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/28 12:52:44 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	load_sprite_type(t_so_long *so_long, char *path, int s_type)
 char	*path_sprite(int type)
 {
 	if (type == WALL)
-		return ("./sprites/Block.xpm");
+		return ("./assets/walls/Block.xpm");
 	return (NULL);
 }
 
