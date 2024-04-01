@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:03:07 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 14:10:50 by geibo            ###   ########.fr       */
+/*   Updated: 2024/03/29 16:38:21 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,25 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 	printf("OK\n");
 }
 
-// void	init_player(t_so_long *so_long)
-// {
-	
-// }
+int	init_player(t_so_long *so_long)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (so_long->map[i])
+	{
+		j = 0;
+		while (so_long->map[i][j])
+		{
+			if (so_long->map[i][j] == 'P')
+			{
+				so_long->player->pp[0] = j * BPX;
+				so_long->player->pp[1] = i * BPX - 1;
+				return (1);
+			}
+			j++;
+		}
+	}
+	return (0);
+}

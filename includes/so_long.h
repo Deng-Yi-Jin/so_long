@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/28 12:53:12 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/29 17:15:12 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 # define BUFFER_SIZE 42
 # define BPX 100
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 900
 # define FAIL_MAP "Invalid map"
 # define WALL_FAIL "Invalid wall"
 # define CHAR_FAIL "Invalid character"
@@ -55,6 +55,7 @@ typedef struct s_map_cord
 typedef struct s_map_img
 {
 	void	*wall;
+	void	*player;
 	void	*coin;
 }	t_map_img;
 
@@ -103,16 +104,24 @@ void	load_sprite(t_so_long *so_long, int s_type);
 void	init_sprites(t_so_long *so_long);
 
 //sprite_type
-void	load_sprite_png(t_so_long *so_long, char *path, int s_type);
+// void	load_sprite_png(t_so_long *so_long, char *path, int s_type);
 void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type);
 
 //wall
 void	draw_wall(t_so_long *so_long);
 void	wall(t_so_long *so_long);
 
+//player
+void	
+void	player(t_so_long *so_long);
+
 //debug
 void	print_map(t_so_long so_long);
 
 //hook
 int	key_hook(int keycode, t_so_long *so_long);
+
+//player
+void	init_player(t_so_long *so_long);
+
 #endif

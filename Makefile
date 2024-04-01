@@ -8,12 +8,14 @@ INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/in
 SCRS_DIR = srcs
 MAIN_DIR = main
 SPRITE_DIR = sprite
+PLAYER_DIR = player
 DEBUG_DIR = debug
 UTILS_DIR = utils
 GNL_DIR = GetNextLine
 SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c hook.c) \
+						 $(addprefix $(PLAYER_DIR)/, player.c) \
 						 $(addprefix $(DEBUG_DIR)/, debug.c) \
-						 $(addprefix $(SPRITE_DIR)/, wall.c) \
+						 $(addprefix $(SPRITE_DIR)/, wall.c player.c) \
 						 $(addprefix $(UTILS_DIR)/, error.c map_checker.c map_utils.c parse_check.c sprite1.c sprite_type.c) \
 						 $(addprefix $(GNL_DIR)/, get_next_line.c)
 
@@ -21,7 +23,7 @@ SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
 # Object files
 OBJS_DIR = objs
-OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) $(OBJS_DIR)/$(GNL_DIR) $(OBJS_DIR)/$(SPRITE_DIR) $(OBJS_DIR)/$(DEBUG_DIR)
+OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) $(OBJS_DIR)/$(GNL_DIR) $(OBJS_DIR)/$(SPRITE_DIR) $(OBJS_DIR)/$(DEBUG_DIR) $(OBJS_DIR)/$(PLAYER_DIR)
 OBJS_FILES = $(patsubst %.c,%.o,$(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_DIR)/,$(OBJS_FILES))
 

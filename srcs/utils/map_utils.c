@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:37:20 by djin              #+#    #+#             */
-/*   Updated: 2024/03/27 13:45:42 by djin             ###   ########.fr       */
+/*   Updated: 2024/03/29 14:24:01 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ bool	init_map_cord(t_so_long *so_long)
 	int	x_len;
 	int	y_len;
 
-	x_len = ft_strlen(so_long->map[0]);
+	x_len = ft_strlen(so_long->map[0]) - 1;
 	y_len = ft_lstsize(so_long->lst_map);
 	so_long->map_cord = ft_calloc(1, sizeof(t_map_cord));
 	if (!so_long->map_cord)
 		return (false);
-	so_long->map_cord->x = (WINDOW_WIDTH / 2) - (x_len * 32 / 2);
-	so_long->map_cord->y = (WINDOW_HEIGHT / 2) - (y_len * 32 / 2);
+	so_long->map_cord->x = (WINDOW_WIDTH / 2) - (x_len * 100 / 2);
+	so_long->map_cord->y = (WINDOW_HEIGHT / 2) - (y_len * 100 / 2);
 	return (true);
 }
 
