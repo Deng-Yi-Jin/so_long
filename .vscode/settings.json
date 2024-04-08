@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"mlx.h": "c",
-		"source_location": "c"
+		"source_location": "c",
+		"so_long.h": "c",
+		"random": "c"
 	}
 }

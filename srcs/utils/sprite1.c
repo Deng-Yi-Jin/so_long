@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:12:14 by geibo             #+#    #+#             */
-/*   Updated: 2024/03/29 17:13:49 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:49:16 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	load_sprite_type(t_so_long *so_long, char *path, int s_type)
 {
-	// if (ft_strcmp(OS, "Linux") == 0)
-		load_sprite_xpm(so_long, path, s_type);
+	load_sprite_xpm(so_long, path, s_type);
 }
 
 char	*path_sprite(int type)

@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:37:20 by djin              #+#    #+#             */
-/*   Updated: 2024/04/08 14:55:16 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:48:46 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ bool	init_map_img(t_so_long *so_long)
 
 	so_long->map_img.wall = mlx_xpm_file_to_image(so_long->mlx, \
 	"./sprites/Fence.xpm", &width, &height);
-	return(true);
+	return (true);
 }
