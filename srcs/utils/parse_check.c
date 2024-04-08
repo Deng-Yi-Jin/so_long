@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:01:33 by djin              #+#    #+#             */
-/*   Updated: 2024/03/21 15:16:21 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/08 14:39:22 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,29 @@ bool	open_map(char *argv, t_so_long *so_long)
 
 int	add_lst_map(t_so_long *so_long)
 {
-	char	*line;
-	int		line_count;
+	t_char	char_l;
 	t_list	*new_node;
 
-	line_count = 0;
-	line = get_next_line(so_long->map_fd);
-	while (line != NULL)
+	char_l.line_count = 0;
+	char_l.line = "";
+	while (char_l.line != NULL)
 	{
-		if (!line)
-			break ;
-		line_count++;
-		new_node = ft_lstnew(ft_strdup(line));
-		if (new_node == NULL)
+		char_l.line = get_next_line(so_long->map_fd);
+		char_l.line_count++;
+		if (!char_l.line)
 		{
-			free(line);
-			return (-1);
+			if (so_long->gw == -1)
+				return (-1);
+			break ;
 		}
+		new_node = ft_lstnew(ft_strdup(char_l.line));
+		if (so_long->gw == -1)
+			so_long->gw = ft_strlen(char_l.line) - 1;
 		if (so_long->lst_map == NULL)
 			so_long->lst_map = new_node;
 		else
 			ft_lstadd_back(&so_long->lst_map, new_node);
-		free(line);
-		line = get_next_line(so_long->map_fd);
+		free(char_l.line);
 	}
-	return (line_count);
+	return (char_l.line_count);
 }

@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:10 by djin              #+#    #+#             */
-/*   Updated: 2024/03/29 16:42:01 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 15:17:55 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int	game_loop(t_so_long *so_long)
 {
 	wall(so_long);
-	player(so_long);
+	// player(so_long);
 	return (1);
 }
 
@@ -32,9 +32,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	init_s_so_long(&so_long, argv);
 	init_map(argc, argv, &so_long);
-	// print_map(so_long);
+	print_map(so_long);
 	init_sprites(&so_long);
-	init_player(&so_long);
+	// init_player(&so_long);
 	mlx_hook(so_long.win, 2, 1L << 0, key_hook, &so_long);
 	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
 	mlx_loop(so_long.mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:19:02 by djin              #+#    #+#             */
-/*   Updated: 2024/03/21 15:34:21 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/08 14:53:00 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ bool	lst_line_wall_check(t_so_long *so_long, int line_count)
 	int		total_line;
 	char	*line;
 
+	if (line_count == -1)
+		return (false);
 	total_line = line_count;
 	line = "";
 	max_len = ft_strlen(so_long->lst_map->content) - 1;
@@ -72,8 +74,8 @@ bool	check_char_in_map(t_so_long *so_long)
 		{
 			if (
 				!(so_long->map[line][i] != '1' || so_long->map[line][i] != '0' \
-			|| so_long->map[line][i] != 'P' || so_long->map[line][i] != 'E' \
-			|| so_long->map[line][i] != 'C' || so_long->map[line][i] != '*')
+				|| so_long->map[line][i] != 'P' || so_long->map[line][i] != 'E' \
+				|| so_long->map[line][i] != 'C' || so_long->map[line][i] != '*')
 			)
 				return (false);
 			i++;

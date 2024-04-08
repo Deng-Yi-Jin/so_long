@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:03:07 by djin              #+#    #+#             */
-/*   Updated: 2024/03/29 16:38:21 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 14:25:45 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	init_s_so_long(t_so_long *so_long, char **argv)
 {
 	(void)argv;
 	so_long->mlx = mlx_init();
+	so_long->gw = -1;
+	so_long->gh = -1;
 	so_long->player = ft_calloc(1, sizeof(t_player));
 	so_long->win = mlx_new_window(so_long->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, \
 	TITLE);
@@ -42,7 +44,7 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 	printf("OK\n");
 }
 
-int	init_player(t_so_long *so_long)
+bool	init_player(t_so_long *so_long)
 {
 	int	i;
 	int	j;
@@ -57,10 +59,10 @@ int	init_player(t_so_long *so_long)
 			{
 				so_long->player->pp[0] = j * BPX;
 				so_long->player->pp[1] = i * BPX - 1;
-				return (1);
+				return (true);
 			}
 			j++;
 		}
 	}
-	return (0);
+	return (false);
 }

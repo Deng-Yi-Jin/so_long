@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/03/29 17:15:12 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 14:57:41 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@
 # define ESC 17
 
 # define TITLE "so_long"
+
+typedef	struct s_char
+{
+	char	*line;
+	int		line_count;
+}	t_char;
 
 typedef struct s_player
 {
@@ -112,7 +118,6 @@ void	draw_wall(t_so_long *so_long);
 void	wall(t_so_long *so_long);
 
 //player
-void	
 void	player(t_so_long *so_long);
 
 //debug
@@ -122,6 +127,6 @@ void	print_map(t_so_long so_long);
 int	key_hook(int keycode, t_so_long *so_long);
 
 //player
-void	init_player(t_so_long *so_long);
+bool	init_player(t_so_long *so_long);
 
 #endif
