@@ -13,7 +13,7 @@ DEBUG_DIR = debug
 UTILS_DIR = utils
 GNL_DIR = GetNextLine
 SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c hook.c) \
-						 $(addprefix $(PLAYER_DIR)/, player.c) \
+						 $(addprefix $(PLAYER_DIR)/, movement.c player.c) \
 						 $(addprefix $(DEBUG_DIR)/, debug.c) \
 						 $(addprefix $(SPRITE_DIR)/, wall.c player.c) \
 						 $(addprefix $(UTILS_DIR)/, error.c free.c map_checker.c map_utils.c parse_check.c sprite1.c sprite_type.c) \

@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/08 22:37:57 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/09 00:11:50 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef	struct s_char
 typedef struct s_player
 {
 	int	pp[2];
+	int	go[2];
 	int	step;
 }	t_player;
 
@@ -135,5 +136,8 @@ bool	init_player(t_so_long *so_long);
 
 //free
 void	free_map(t_so_long *so_long);
+
+//movement
+void	up(t_so_long *so_long);
 
 #endif

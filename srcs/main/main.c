@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:10 by djin              #+#    #+#             */
-/*   Updated: 2024/04/08 22:38:11 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/08 23:59:42 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv, char **envp)
 	print_map(so_long);
 	init_sprites(&so_long);
 	init_player(&so_long);
+	// init_camera(&so_long);
 	mlx_hook(so_long.win, KEYPRESS, 0, key_hook, &so_long);
 	mlx_hook(so_long.win, DESTROY, 0, close_win, &so_long);
 	mlx_loop_hook(so_long.mlx, game_loop, &so_long);
