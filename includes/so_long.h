@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/09 00:11:50 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/09 16:06:01 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,29 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include "sprite_type.h"
-# include "../lib/mlx_linux/mlx.h"
+// # include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
 # define KEYPRESS 2
 # define DESTROY 17
+# define W 13
+# define A 0
+# define D 2
+# define S 1
+# define ESC 53
 
 # define BUFFER_SIZE 42
 # define BPX 100
-# define WINDOW_WIDTH 1600
-# define WINDOW_HEIGHT 900
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 # define FAIL_MAP "Invalid map"
 # define WALL_FAIL "Invalid wall"
 # define CHAR_FAIL "Invalid character"
 # define FAIL_IMG "Fail to generate image"
 # define OS "Linux"
-
-# define ESC 17
 
 # define TITLE "so_long"
 
@@ -52,7 +55,6 @@ typedef	struct s_char
 typedef struct s_player
 {
 	int	pp[2];
-	int	go[2];
 	int	step;
 }	t_player;
 
@@ -139,5 +141,8 @@ void	free_map(t_so_long *so_long);
 
 //movement
 void	up(t_so_long *so_long);
+void	down(t_so_long *so_long);
+void	left(t_so_long *so_long);
+void	right(t_so_long *so_long);
 
 #endif

@@ -3,6 +3,7 @@
 		"mlx.h": "c",
 		"source_location": "c",
 		"so_long.h": "c",
-		"random": "c"
+		"random": "c",
+		"ft_printf.h": "c"
 	}
 }

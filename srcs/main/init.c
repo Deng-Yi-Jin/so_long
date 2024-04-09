@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:03:07 by djin              #+#    #+#             */
-/*   Updated: 2024/04/08 23:59:39 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/09 15:12:29 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,24 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 
 bool	init_player(t_so_long *so_long)
 {
-	int	i;
-	int	j;
+	int		x;
+	int		y;
 
-	i = 0;
-	while (so_long->map[i])
+	y = 0;
+	while (so_long->map[y])
 	{
-		j = 0;
-		while (so_long->map[i][j])
+		x = 0;
+		while (so_long->map[y][x])
 		{
-			if (so_long->map[i][j] == 'P')
+			if (so_long->map[y][x] == 'P')
 			{
-				so_long->player->pp[0] = j * BPX;
-				so_long->player->pp[1] = i * BPX - 1;
+				so_long->player->pp[0] = x * BPX;
+				so_long->player->pp[1] = y * BPX;
 				return (true);
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (false);
 }
