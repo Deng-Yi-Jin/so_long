@@ -6,15 +6,15 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:39:16 by djin              #+#    #+#             */
-/*   Updated: 2024/03/21 12:37:39 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 15:46:02 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_node **lst, t_node *new)
 {
-	t_list	*newnode;
+	t_node	*newnode;
 
 	if (!lst || !new)
 		return ;

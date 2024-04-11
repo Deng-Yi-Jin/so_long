@@ -1,6 +1,6 @@
 # NAME = so_long
 CC = gcc
-CFLAGS = -fsanitize=address -Wall -Wextra -Werror -ggdb
+CFLAGS = -fsanitize=address -Wall -Wextra -Werror -ggdb -w
 INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos
 # INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/include -Ilib/mlx_linux -O3
 

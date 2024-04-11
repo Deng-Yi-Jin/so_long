@@ -6,15 +6,15 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:28:53 by djin              #+#    #+#             */
-/*   Updated: 2023/05/08 18:59:28 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 15:32:00 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
-	t_list	*newnode;
+	t_node	*newnode;
 
 	newnode = lst;
 	while (newnode != NULL && newnode -> next != NULL)

@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/11 15:06:58 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 15:32:00 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_so_long
 	char		**map;
 	t_map_img	map_img;
 	t_map_cord	*map_cord;
-	t_list		*lst_map;
+	t_node		*lst_map;
 	t_player	*player;
 }	t_so_long;
 
@@ -93,8 +93,8 @@ void	init_s_so_long(t_so_long *so_long);
 void	init_map(int argc, char **argv, t_so_long *so_long);
 
 //map_check
-bool	check_wall(t_list *map);
-bool	check_inside(t_list *map);
+bool	check_wall(t_node *map);
+bool	check_inside(t_node *map);
 
 //error
 void	error(char *str);

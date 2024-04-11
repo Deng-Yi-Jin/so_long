@@ -6,16 +6,16 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:22:26 by djin              #+#    #+#             */
-/*   Updated: 2023/05/08 18:59:00 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 15:32:00 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_node **lst, void (*del)(void *))
 {
-	t_list	*newnode;
-	t_list	*prevnode;
+	t_node	*newnode;
+	t_node	*prevnode;
 
 	if (!lst || !del)
 		return ;

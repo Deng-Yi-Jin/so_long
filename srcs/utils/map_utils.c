@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/11 15:24:48 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 16:43:25 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,43 @@ int	parse_map(t_so_long *so_long)
 		if (so_long->gw == -1)
 			so_long->gw = ft_strlen(line);
 		if (so_long->lst_map == NULL)
+		{
 			so_long->lst_map = ft_lstnew(ft_strdup(line));
+			so_long->lst_map->head = so_long->lst_map;
+		}
 		else
 			ft_lstadd_back(&so_long->lst_map, ft_lstnew(ft_strdup(line)));
 		free(line);
+		so_long->lst_map->tail = ft_lstlast(so_long->lst_map);
 	}
 	return (line_count);
 }
 
 bool	check_map(t_so_long *so_long, int line_count)
 {
-	t_list	*current_node;
+	t_node	*current_node;
+	char	*trim;
 	int		i;
 
 	i = 0;
-	current_node = so_long->lst_map;
+	current_node = so_long->lst_map->head;
 	while (current_node)
 	{
-		if (ft_strlen(current_node->content) != (size_t)so_long->gw)
+		trim = ft_strtrim(current_node->content, "\n");
+		if (ft_strlen(trim) != (so_long->gw - 1))
+		{
+			free(trim);
 			return (false);
+		}
+		free(trim);
 		if (i == 0 || i == line_count - 1)
 		{
-			if (!check_wall(current_node->content))
+			if (!check_wall(current_node))
 				return (false);
 		}
 		else
 		{
-			if (!check_inside(current_node->content))
+			if (!check_inside(current_node))
 				return (false);
 		}
 		current_node = current_node->next;

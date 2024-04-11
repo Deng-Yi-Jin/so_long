@@ -6,13 +6,13 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:32:12 by djin              #+#    #+#             */
-/*   Updated: 2023/05/08 22:11:06 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 15:32:00 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_if(t_list **temp, t_list *newnode, t_list **head)
+static void	ft_if(t_node **temp, t_node *newnode, t_node **head)
 {
 	if (*head == 0)
 	{
@@ -26,11 +26,11 @@ static void	ft_if(t_list **temp, t_list *newnode, t_list **head)
 	}
 }
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_node	*ft_lstmap(t_node *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*temp;
-	t_list	*newnode;
-	t_list	*head;
+	t_node	*temp;
+	t_node	*newnode;
+	t_node	*head;
 
 	if (!lst || !f || !del)
 		return (NULL);
@@ -38,7 +38,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	head = 0;
 	while (lst != 0)
 	{
-		newnode = malloc(sizeof(t_list));
+		newnode = malloc(sizeof(t_node));
 		if (!newnode)
 			return (NULL);
 		newnode -> content = (*f)(lst -> content);

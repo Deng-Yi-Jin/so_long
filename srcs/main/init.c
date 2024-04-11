@@ -6,7 +6,7 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:01:26 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/11 15:24:52 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 16:29:46 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 		error("Invalid map");
 	if (!open_map(so_long, argv[1]))
 		error("Fail to open map");
-	line_count = parse_map(so_long);
+	line_count = parse_map(so_long) - 1;
 	if (!check_map(so_long, line_count))
 		error("Invalid map");
 }

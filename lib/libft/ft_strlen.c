@@ -6,13 +6,13 @@
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:21 by djin              #+#    #+#             */
-/*   Updated: 2024/03/04 18:33:27 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/11 16:04:10 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 
