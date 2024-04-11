@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/09 22:36:57 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/11 15:06:58 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,21 @@ typedef struct s_so_long
 char	*get_next_line(int fd);
 
 //initialize
-void	init_s_so_long(t_so_long *so_long, char **argv);
+void	init_s_so_long(t_so_long *so_long);
 void	init_map(int argc, char **argv, t_so_long *so_long);
 
-//parse_check
-bool	argc_check(int argc);
-int		add_lst_map(t_so_long *so_long);
+//map_check
+bool	check_wall(t_list *map);
+bool	check_inside(t_list *map);
 
 //error
-void	error(char *message);
+void	error(char *str);
 
 //map_utils
 bool	map_is_valid(char *argv, int argc);
 bool	open_map(t_so_long *so_long, char *argv);
+int		parse_map(t_so_long *so_long);
+bool	check_map(t_so_long *so_long, int line_count);
 
 //map_checker
 bool	lst_line_wall_check(t_so_long *so_long, int line_count);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/09 22:38:27 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/11 15:24:48 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,72 @@ bool	open_map(t_so_long *so_long, char *argv)
 {
 	char	*path;
 
-	path = ft_strjoin("./maps/", argv);
+	path = ft_strdup(argv);
+	if (!path)
+		return (false);
+	if (ft_strcmp(ft_strrchr(path, '.'), ".ber") != 0)
+	{
+		free(path);
+		return (false);
+	}
 	so_long->map_fd = open(path, O_RDONLY);
 	free(path);
 	if (so_long->map_fd < 0)
 		return (false);
+	return (true);
 }
 
-bool	read_map(t_so_long *so_long)
+int	parse_map(t_so_long *so_long)
 {
 	char	*line;
+	char	line_count;
 
-	
+	line_count = 0;
+	line = "";
+	while (line)
+	{
+		line = get_next_line(so_long->map_fd);
+		line_count++;
+		if (line == NULL)
+		{
+			if (so_long->gw == -1)
+				return (-1);
+			break ;
+		}
+		if (so_long->gw == -1)
+			so_long->gw = ft_strlen(line);
+		if (so_long->lst_map == NULL)
+			so_long->lst_map = ft_lstnew(ft_strdup(line));
+		else
+			ft_lstadd_back(&so_long->lst_map, ft_lstnew(ft_strdup(line)));
+		free(line);
+	}
+	return (line_count);
+}
+
+bool	check_map(t_so_long *so_long, int line_count)
+{
+	t_list	*current_node;
+	int		i;
+
+	i = 0;
+	current_node = so_long->lst_map;
+	while (current_node)
+	{
+		if (ft_strlen(current_node->content) != (size_t)so_long->gw)
+			return (false);
+		if (i == 0 || i == line_count - 1)
+		{
+			if (!check_wall(current_node->content))
+				return (false);
+		}
+		else
+		{
+			if (!check_inside(current_node->content))
+				return (false);
+		}
+		current_node = current_node->next;
+		i++;
+	}
+	return (true);
 }

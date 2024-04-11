@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 21:57:44 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/11 15:07:05 by djin             ###   ########.fr       */
+/*   Created: 2024/04/11 14:32:37 by djin              #+#    #+#             */
+/*   Updated: 2024/04/11 14:32:57 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	error(char *str)
 {
-	t_so_long	so_long;
-
-	init_s_so_long(&so_long);
-	init_map(argc, argv, &so_long);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
 }
