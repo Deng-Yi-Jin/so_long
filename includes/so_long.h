@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/09 16:06:01 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/09 22:36:57 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "sprite_type.h"
-// # include "../lib/mlx_linux/mlx.h"
+# include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -36,8 +36,8 @@
 
 # define BUFFER_SIZE 42
 # define BPX 100
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 # define FAIL_MAP "Invalid map"
 # define WALL_FAIL "Invalid wall"
 # define CHAR_FAIL "Invalid character"
@@ -94,17 +94,14 @@ void	init_map(int argc, char **argv, t_so_long *so_long);
 
 //parse_check
 bool	argc_check(int argc);
-bool	open_map(char *argv, t_so_long *so_long);
 int		add_lst_map(t_so_long *so_long);
 
 //error
 void	error(char *message);
 
 //map_utils
-bool	convert_lst_to_map(t_so_long *so_long, int line_count);
-bool	init_map_cord(t_so_long *so_long);
-bool	check_char_in_map(t_so_long *so_long);
-bool	init_map_img(t_so_long *so_long);
+bool	map_is_valid(char *argv, int argc);
+bool	open_map(t_so_long *so_long, char *argv);
 
 //map_checker
 bool	lst_line_wall_check(t_so_long *so_long, int line_count);
