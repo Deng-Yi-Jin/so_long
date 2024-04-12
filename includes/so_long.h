@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/11 15:32:00 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/12 16:53:16 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@
 
 # define BUFFER_SIZE 42
 # define BPX 100
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
+# define TITLE "so_long"
 # define FAIL_MAP "Invalid map"
 # define WALL_FAIL "Invalid wall"
 # define CHAR_FAIL "Invalid character"
@@ -95,18 +96,22 @@ void	init_map(int argc, char **argv, t_so_long *so_long);
 //map_check
 bool	check_wall(t_node *map);
 bool	check_inside(t_node *map);
+int		map_height(t_node *map);
 
 //error
 void	error(char *str);
+void	error_free(char *str, t_so_long *so_long);
 
 //map_utils
 bool	map_is_valid(char *argv, int argc);
 bool	open_map(t_so_long *so_long, char *argv);
 int		parse_map(t_so_long *so_long);
 bool	check_map(t_so_long *so_long, int line_count);
+bool	convert_node(t_so_long *so_long);
 
-//map_checker
-bool	lst_line_wall_check(t_so_long *so_long, int line_count);
+//free
+void	free_node(t_node *node);
+void	free_map(t_so_long *so_long);
 
 //sprite1
 void	load_sprite_type(t_so_long *so_long, char *path, int s_type);

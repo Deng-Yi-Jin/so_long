@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:35 by djin              #+#    #+#             */
-/*   Updated: 2024/04/11 16:42:53 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/12 16:19:10 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,24 @@ bool	check_inside(t_node *map)
 	}
 	free(line);
 	return (true);
+}
+
+int	map_height(t_node *map)
+{
+	int		i;
+	int		count;
+	char	*line;
+
+	i = 0;
+	count = 0;
+	while (map)
+	{
+		line = ft_strdup(map->content);
+		if (line[0] == '\0')
+			break ;
+		count++;
+		map = map->next;
+		free(line);
+	}
+	return (count);
 }

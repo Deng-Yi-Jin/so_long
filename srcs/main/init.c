@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:01:26 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/11 16:29:46 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/12 16:53:00 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_s_so_long(t_so_long *so_long)
 	so_long->player = ft_calloc(1, sizeof(t_player));
 	if (!so_long->player)
 		error("Fail to allocate memory");
-	so_long->win = mlx_new_window(so_long->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, \
-		"so_long");
+	so_long->win = mlx_new_window(so_long->mlx, WINDOW_WIDTH, \
+					WINDOW_HEIGHT, TITLE);
 	so_long->map = NULL;
 	so_long->lst_map = NULL;
 }
@@ -38,4 +38,7 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 	line_count = parse_map(so_long) - 1;
 	if (!check_map(so_long, line_count))
 		error("Invalid map");
+	// printf("hi");
+	// if (convert_node(so_long))
+	// 	error("Fail to convert node");
 }

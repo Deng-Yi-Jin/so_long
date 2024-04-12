@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/11 16:43:25 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/12 16:34:56 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,33 @@ bool	check_map(t_so_long *so_long, int line_count)
 		current_node = current_node->next;
 		i++;
 	}
+	return (true);
+}
+
+bool	convert_node(t_so_long *so_long)
+{
+	t_node	*current_node;
+	int		i;
+
+	so_long->gh = ft_lstsize(so_long->lst_map);
+	if (so_long->gh < 3)
+		return (false);
+	so_long->map = ft_calloc(so_long->gh + 1, sizeof(char *));
+	if (!so_long->map)
+		return (false);
+	current_node = so_long->lst_map->head;
+	i = 0;
+	while(current_node)
+	{
+		so_long->map[i] = ft_strdup(current_node->content);
+		if (!so_long->map[i])
+			return (false);
+		current_node = current_node->next;
+		i++;
+	}
+	so_long->gw = ft_strlen(so_long->map[0]);
+	if (so_long->gw < 4)
+		return (false);
+	free_node(so_long->lst_map);
 	return (true);
 }
