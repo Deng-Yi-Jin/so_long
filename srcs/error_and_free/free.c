@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:05:52 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/12 16:08:33 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/12 17:04:38 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	free_node(t_node *node)
 
 	while (node)
 	{
-		tmp = node->next;
-		free(node);
-		node = tmp;
+		tmp = node;
+		node = node->next;
+		free(tmp->content);
+		free(tmp);
 	}
 }

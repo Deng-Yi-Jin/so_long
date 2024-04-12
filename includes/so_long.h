@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/12 16:53:16 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/12 17:02:56 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	wall(t_so_long *so_long);
 void	player(t_so_long *so_long);
 
 //debug
-void	print_map(t_so_long so_long);
+void	print_map(t_so_long *so_long);
 
 //hook
 int	key_hook(int keycode, t_so_long *so_long);

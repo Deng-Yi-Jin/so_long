@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/12 16:34:56 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/12 16:59:27 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	parse_map(t_so_long *so_long)
 		free(line);
 		so_long->lst_map->tail = ft_lstlast(so_long->lst_map);
 	}
+	if (line != NULL)
+		free(line);
 	return (line_count);
 }
 
@@ -126,8 +128,8 @@ bool	convert_node(t_so_long *so_long)
 		i++;
 	}
 	so_long->gw = ft_strlen(so_long->map[0]);
-	if (so_long->gw < 4)
+	if (so_long->gw < 3)
 		return (false);
-	free_node(so_long->lst_map);
+	free_node(so_long->lst_map->head);
 	return (true);
 }

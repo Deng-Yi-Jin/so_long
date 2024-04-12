@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:38:36 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/12 16:57:32 by geibo            ###   ########.fr       */
+/*   Created: 2024/04/12 17:01:20 by geibo             #+#    #+#             */
+/*   Updated: 2024/04/12 17:03:21 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		close_win(t_so_long *so_long)
+void	print_map(t_so_long *so_long)
 {
-	// free_node(so_long->lst_map);
-	free_map(so_long);
-	free(so_long->player);
-	exit(EXIT_SUCCESS);
-	return(0);
+	int	i;
+
+	i = 0;
+	while (i < so_long->gh)
+	{
+		printf("%s", so_long->map[i]);
+		i++;
+	}
+	printf("\n");
 }
