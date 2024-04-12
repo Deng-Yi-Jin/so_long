@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/12 17:02:56 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/13 03:18:12 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,16 @@
 # define A 0
 # define D 2
 # define S 1
-# define ESC 53
+// # define ESC 53
+
+# define UP 119
+# define DOWN 115
+# define LEFT 97
+# define RIGHT 100
+# define ESC 65307
 
 # define BUFFER_SIZE 42
-# define BPX 100
+# define BPX 50
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
 # define TITLE "so_long"
@@ -55,20 +61,29 @@ typedef	struct s_char
 
 typedef struct s_player
 {
-	int	pp[2];
-	int	step;
+	int		pp[2];
+	int		step;
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
 }	t_player;
 
-typedef struct s_map_cord
+typedef struct s_enemy
 {
-	int		x;
-	int		y;
-}	t_map_cord;
+	void	**img;
+	int		ep[2];
+	int		frame;
+	int		img_index;
+	int		sign;
+}	t_enemy;
 
 typedef struct s_map_img
 {
 	void	*wall;
-	void	*player;
+	void	*floor;
+	void	*exit;
+	void	*exit1;
 	void	*coin;
 }	t_map_img;
 
@@ -79,10 +94,11 @@ typedef struct s_so_long
 	int			map_fd;
 	int			gh;
 	int			gw;
+	int			exit_status;
 	char		**map;
-	t_map_img	map_img;
-	t_map_cord	*map_cord;
+	t_map_img	sprite_img;
 	t_node		*lst_map;
+	t_enemy		*enemy;
 	t_player	*player;
 }	t_so_long;
 
@@ -92,11 +108,14 @@ char	*get_next_line(int fd);
 //initialize
 void	init_s_so_long(t_so_long *so_long);
 void	init_map(int argc, char **argv, t_so_long *so_long);
+void	init_image(t_so_long *so_long);
+void	init_enemy_img(t_so_long *so_long);
 
 //map_check
 bool	check_wall(t_node *map);
 bool	check_inside(t_node *map);
 int		map_height(t_node *map);
+bool	check_collectible(t_so_long *so_long);
 
 //error
 void	error(char *str);
@@ -109,39 +128,33 @@ int		parse_map(t_so_long *so_long);
 bool	check_map(t_so_long *so_long, int line_count);
 bool	convert_node(t_so_long *so_long);
 
+//map_utils2
+bool	check_char(t_so_long *so_long);
+void	put_img(t_so_long *so_long, int x, int y, void *img);
+void	put_img_to_map(t_so_long *so_long);
+
+//enemy
+void	get_enemy_pos(t_so_long *so_long);
+
 //free
 void	free_node(t_node *node);
 void	free_map(t_so_long *so_long);
 
-//sprite1
-void	load_sprite_type(t_so_long *so_long, char *path, int s_type);
-char	*path_sprite(int type);
-void	load_sprite(t_so_long *so_long, int s_type);
-void	init_sprites(t_so_long *so_long);
-
-//sprite_type
 // void	load_sprite_png(t_so_long *so_long, char *path, int s_type);
 void	load_sprite_xpm(t_so_long *so_long, char *path, int s_type);
 
-//wall
-void	draw_wall(t_so_long *so_long);
-void	wall(t_so_long *so_long);
-
-//player
-void	player(t_so_long *so_long);
+//game
+void	game_over(t_so_long *so_long);
+void	game_win(t_so_long *so_long);
+void	move_collect(t_so_long *so_long, int x, int y);
 
 //debug
 void	print_map(t_so_long *so_long);
 
 //hook
-int	key_hook(int keycode, t_so_long *so_long);
-int	close_win(t_so_long *so_long);
-
-//player
-bool	init_player(t_so_long *so_long);
-
-//free
-void	free_map(t_so_long *so_long);
+int		key_hook(int keycode, t_so_long *so_long);
+int		close_win(t_so_long *so_long);
+int		animation(t_so_long *so_long);
 
 //movement
 void	up(t_so_long *so_long);

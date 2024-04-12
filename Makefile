@@ -6,18 +6,19 @@ INCLUDES = -Iincludes -Ilib/libft -Ilib/ft_printf -Ilib/minilibx_macos -I/usr/in
 
 # Source files
 SCRS_DIR = srcs
-
-E&F_DIR = error_and_free
+ENEMY_DIR = enemy
+ENF_DIR = error_and_free
 DEBUG_DIR = debug
 UTILS_DIR = utils
 GNL_DIR = getnextline
 MAIN_DIR = main
 HOOK_DIR = hooks
-SRCS_FILES = $(addprefix $(MAIN_DIR)/, main.c init.c) \
+SRCS_FILES = $(addprefix $(MAIN_DIR)/, game.c main.c init.c) \
+						 $(addprefix $(ENEMY_DIR)/, enemy_utils.c) \
 						 $(addprefix $(DEBUG_DIR)/, debug.c) \
-						 $(addprefix $(HOOK_DIR)/, hook.c) \
-						 $(addprefix $(E&F_DIR)/, error.c free.c) \
-						 $(addprefix $(UTILS_DIR)/, map_utils.c map_check.c) \
+						 $(addprefix $(HOOK_DIR)/, hook.c movement.c) \
+						 $(addprefix $(ENF_DIR)/, error.c free.c) \
+						 $(addprefix $(UTILS_DIR)/, map_utils.c map_utils2.c map_check.c) \
 						 $(addprefix $(GNL_DIR)/, get_next_line.c) \
 
 SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
@@ -25,7 +26,8 @@ SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 # Object files
 OBJS_DIR = objs
 OBJS_DIRS = $(OBJS_DIR) $(OBJS_DIR)/$(MAIN_DIR) $(OBJS_DIR)/$(UTILS_DIR) \
-			 $(OBJS_DIR)/$(E&F_DIR) $(OBJS_DIR)/$(GNL_DIR) $(OBJS_DIR)/$(HOOK_DIR) $(OBJS_DIR)/$(DEBUG_DIR)
+			$(OBJS_DIR)/$(ENF_DIR) $(OBJS_DIR)/$(GNL_DIR) $(OBJS_DIR)/$(HOOK_DIR) \
+			$(OBJS_DIR)/$(DEBUG_DIR) $(OBJS_DIR)/$(ENEMY_DIR)
 OBJS_FILES = $(patsubst %.c,%.o,$(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_DIR)/,$(OBJS_FILES))
 

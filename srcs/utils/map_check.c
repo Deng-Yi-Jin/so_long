@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:35 by djin              #+#    #+#             */
-/*   Updated: 2024/04/12 16:19:10 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/13 03:22:39 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	check_inside(t_node *map)
 			return (false);
 		}
 		if (line[i] == '0' || line[i] == 'P' || line[i] == 'E'
-		|| line[i] == '\n' || line[i] == '1')
+		|| line[i] == '\n' || line[i] == '1' || line[i] == 'C')
 			i++;
 		else
 		{
@@ -79,4 +79,24 @@ int	map_height(t_node *map)
 		free(line);
 	}
 	return (count);
+}
+
+bool	check_collectible(t_so_long *so_long)
+{
+	int		i;
+	int		line;
+
+	line = 0;
+	while (so_long->map[line])
+	{
+		i = 0;
+		while (so_long->map[line][i])
+		{
+			if (so_long->map[line][i] == 'C')
+				return (true);
+			i++;
+		}
+		line++;
+	}
+	return (false);
 }
