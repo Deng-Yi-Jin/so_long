@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:38:36 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 03:17:57 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/15 01:39:34 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ int		animation(t_so_long *so_long)
 			&& so_long->enemy->ep[1] == so_long->player->pp[1])
 			game_over(so_long);
 		if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 1
-			&& so_long->enemy->ep[0] > 0
+			// && so_long->enemy->ep[0] > 0
 			&& so_long->map[so_long->enemy->ep[1]][so_long->enemy->ep[0] - 1] == '0')
 			put_img(so_long, so_long->enemy->ep[0] - 1, so_long->enemy->ep[1], so_long->sprite_img.floor);
-		if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 1
-			&& so_long->enemy->ep[0] < so_long->gw - 1
+		if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 0
+			// && so_long->enemy->ep[0] < so_long->gw - 1
 			&& so_long->map[so_long->enemy->ep[1]][so_long->enemy->ep[0] + 1] == '0')
 			put_img(so_long, so_long->enemy->ep[0] + 1, so_long->enemy->ep[1], so_long->sprite_img.floor);
 		put_img(so_long, so_long->enemy->ep[0], so_long->enemy->ep[1], so_long->sprite_img.floor);
