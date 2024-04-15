@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/13 03:18:12 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/15 17:00:25 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include "sprite_type.h"
-# include "../lib/mlx_linux/mlx.h"
+// # include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -42,6 +42,7 @@
 
 # define BUFFER_SIZE 42
 # define BPX 50
+# define MPX 8
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
 # define TITLE "so_long"
@@ -87,6 +88,26 @@ typedef struct s_map_img
 	void	*coin;
 }	t_map_img;
 
+typedef struct	s_monster
+{
+	int	pp[2];
+	int	init_p[2];
+	int	a[2];
+	int	b[2];
+	int	c[2];
+	int	d[2];
+	int alive;
+	int	move;
+	int	ta;
+	int	td;
+	int	direction;
+	int	la;
+	int	ap;
+	int	ai;
+	int mi;
+}	t_monster;
+
+
 typedef struct s_so_long
 {
 	void		*mlx;
@@ -94,11 +115,13 @@ typedef struct s_so_long
 	int			map_fd;
 	int			gh;
 	int			gw;
+	int			go[2];
 	int			exit_status;
 	char		**map;
 	t_map_img	sprite_img;
 	t_node		*lst_map;
 	t_enemy		*enemy;
+	t_node		*enemy_lst;
 	t_player	*player;
 }	t_so_long;
 
@@ -161,5 +184,18 @@ void	up(t_so_long *so_long);
 void	down(t_so_long *so_long);
 void	left(t_so_long *so_long);
 void	right(t_so_long *so_long);
+
+//enemy animation
+void	monster_move(t_so_long *so_long);
+
+//test enemy_utitls
+void	analyse_monster(t_so_long *so_long);
+
+//camera
+void	init_camera(t_so_long *so_long);
+
+//enemy_distance
+int	get_mlwc(t_monster *monster, t_so_long *so_long);
+int	get_mrwc(t_monster *monster, t_so_long *so_long);
 
 #endif
