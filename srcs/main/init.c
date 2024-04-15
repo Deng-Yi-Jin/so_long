@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:01:26 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 03:20:41 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/15 15:17:57 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	init_s_so_long(t_so_long *so_long)
 	so_long->gw = -1;
 	so_long->gh = -1;
 	so_long->player = ft_calloc(1, sizeof(t_player));
-	so_long->enemy = ft_calloc(1, sizeof(t_enemy));
 	if (!so_long->player)
 		error("Fail to allocate memory");
 	so_long->map = NULL;
 	so_long->lst_map = NULL;
+	so_long->enemy_lst = NULL;
 }
 
 void	init_map(int argc, char **argv, t_so_long *so_long)

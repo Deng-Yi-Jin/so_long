@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:35 by djin              #+#    #+#             */
-/*   Updated: 2024/04/13 03:22:39 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/15 14:14:29 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ bool	check_inside(t_node *map)
 			return (false);
 		}
 		if (line[i] == '0' || line[i] == 'P' || line[i] == 'E'
-		|| line[i] == '\n' || line[i] == '1' || line[i] == 'C')
+		|| line[i] == '\n' || line[i] == '1' || line[i] == 'C'
+		|| line[i] == 'M' || line[i] == '*')
 			i++;
 		else
 		{
