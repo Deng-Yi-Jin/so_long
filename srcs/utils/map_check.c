@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:35 by djin              #+#    #+#             */
-/*   Updated: 2024/04/17 22:26:37 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:48:37 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ bool	check_inside(t_node *map)
 
 int	map_height(t_node *map)
 {
-	int		i;
 	int		count;
 	char	*line;
 
-	i = 0;
 	count = 0;
 	while (map)
 	{

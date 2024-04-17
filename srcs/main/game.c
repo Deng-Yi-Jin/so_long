@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 02:23:55 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:44:44 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:48:03 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	move_collect(t_so_long *so_long, int x, int y)
 
 	line = 0;
 	so_long->map[y][x] = '0';
+	i = 0;
 	while (so_long->map[line])
 	{
 		i = 0;

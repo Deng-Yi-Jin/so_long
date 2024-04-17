@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:33:03 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:48:27 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	parse_map(t_so_long *so_long)
 bool	check_map(t_so_long *so_long, int line_count)
 {
 	t_node	*current_node;
-	char	*trim;
 	int		i;
 
 	i = 0;

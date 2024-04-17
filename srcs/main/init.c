@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:01:26 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:36:21 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:48:20 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	init_image(t_so_long *so_long)
 
 void	init_enemy_img(t_so_long *so_long)
 {
-	int	i;
 	int	width;
 	int	height;
 
-	i = 0;
 	so_long->enemy->img = ft_calloc(6, sizeof(void *));
 	if (!so_long->enemy->img)
 		error_free("Fail to allocate memory", so_long);
