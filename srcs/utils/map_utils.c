@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 03:22:27 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:22:22 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,15 @@ bool	check_map(t_so_long *so_long, int line_count)
 		if (i == 0 || i == line_count - 1)
 		{
 			if (!check_wall(current_node))
-			{
 				return (false);
-			}
 		}
 		else
 		{
 			if (!check_inside(current_node))
-			{
-				printf("hi\n");
 				return (false);
-			}
 		}
-		current_node = current_node->next;
 		i++;
+		current_node = current_node->next;
 	}
 	return (true);
 }
