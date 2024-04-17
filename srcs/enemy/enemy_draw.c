@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   enemy_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 17:01:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/17 16:29:15 by geibo            ###   ########.fr       */
+/*   Created: 2024/04/16 21:25:02 by geibo             #+#    #+#             */
+/*   Updated: 2024/04/16 21:33:35 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int	*get_monster_sprite(t_monster *m, t_so_long *so_long)
-{
-	if (m->ai == 4)
-	{
-		m->ai = 0;
-	}
-}
+# include "so_long.h"
 
 void	draw_block(int x, int y, void *sprite, t_so_long *so_long)
 {
@@ -37,7 +29,7 @@ void	draw_monster(t_so_long *so_long)
 	while (current_node)
 	{
 		m = (t_monster *)current_node->content;
-		if (m->alive == 1 || m->td > 0)
+		if (m->alive == 1)
 			draw_block(m->pp[0] + so_long->po[0],
 				m->pp[1] + so_long->po[1],
 				get_monster_sprite(m, so_long), so_long);

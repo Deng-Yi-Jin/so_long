@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/15 17:00:25 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/17 16:28:50 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "sprite_type.h"
-// # include "../lib/mlx_linux/mlx.h"
+# include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -116,6 +116,7 @@ typedef struct s_so_long
 	int			gh;
 	int			gw;
 	int			go[2];
+	int			po[2];
 	int			exit_status;
 	char		**map;
 	t_map_img	sprite_img;

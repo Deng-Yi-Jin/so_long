@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 21:57:44 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/15 15:40:01 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/17 16:27:12 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	generate(t_so_long *so_long)
 		error_free("Fail to generate window", so_long);
 	so_long->player->step = 0;
 	init_image(so_long);
-	// init_enemy_img(so_long);
-	analyse_monster(so_long);
+	init_enemy_img(so_long);
+	// analyse_monster(so_long);
 	put_img_to_map(so_long);
 }
 
