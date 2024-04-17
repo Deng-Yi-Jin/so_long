@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 21:57:44 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 02:57:03 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:40:09 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	generate(t_so_long *so_long)
 	so_long->enemy->frame = 0;
 	so_long->enemy->img_index = 0;
 	get_enemy_pos(so_long);
-	init_image(so_long);
 	init_enemy_img(so_long);
+	init_image(so_long);
 	put_img_to_map(so_long);
 }
 
