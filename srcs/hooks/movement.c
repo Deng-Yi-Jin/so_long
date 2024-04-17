@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 02:20:38 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 02:42:26 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 19:22:08 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	up(t_so_long *so_long)
 
 	x = so_long->player->pp[0];
 	y = so_long->player->pp[1];
+	printf("x: %d, y: %d\n", x, y);
 	if (so_long->map[y - 1][x] != '1' && so_long->map[y - 1][x] != 'E')
 	{
 		if (x == so_long->enemy->ep[0] && y - 1 == so_long->enemy->ep[1])

@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 02:23:55 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 03:08:54 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 19:29:54 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,19 @@ void	move_collect(t_so_long *so_long, int x, int y)
 
 void	game_win(t_so_long *so_long)
 {
+	int	i;
+
+	i = 0;
 	ft_putstr_fd("You Win!\n", 1);
+	while (so_long->enemy->img[i])
+	{
+		mlx_destroy_image(so_long->mlx, so_long->enemy->img[i]);
+		i++;
+	}
+	mlx_destroy_image(so_long->mlx, so_long->player->up);
+	mlx_destroy_image(so_long->mlx, so_long->player->down);
+	mlx_destroy_image(so_long->mlx, so_long->player->left);
+	mlx_destroy_image(so_long->mlx, so_long->player->right);
 	mlx_destroy_window(so_long->mlx, so_long->win);
 	free_map(so_long);
 	free(so_long->player);
@@ -51,7 +63,19 @@ void	game_win(t_so_long *so_long)
 
 void	game_over(t_so_long *so_long)
 {
+	int	i;
+
+	i = 0;
 	ft_putstr_fd("Game Over\n", 1);
+	while (so_long->enemy->img[i])
+	{
+		mlx_destroy_image(so_long->mlx, so_long->enemy->img[i]);
+		i++;
+	}
+	mlx_destroy_image(so_long->mlx, so_long->player->up);
+	mlx_destroy_image(so_long->mlx, so_long->player->down);
+	mlx_destroy_image(so_long->mlx, so_long->player->left);
+	mlx_destroy_image(so_long->mlx, so_long->player->right);
 	mlx_destroy_window(so_long->mlx, so_long->win);
 	free_map(so_long);
 	free(so_long->player);

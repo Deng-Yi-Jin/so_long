@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:38:36 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/15 01:39:34 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 19:39:20 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,23 @@ int		key_hook(int keycode, t_so_long *so_long)
 int		close_win(t_so_long *so_long)
 {
 	// free_node(so_long->lst_map);
+	int	i;
+
+	i = 0;
+	while (so_long->enemy->img[i])
+	{
+		mlx_destroy_image(so_long->mlx, so_long->enemy->img[i]);
+		i++;
+	}
+	mlx_destroy_image(so_long->mlx, so_long->player->up);
+	mlx_destroy_image(so_long->mlx, so_long->player->down);
+	mlx_destroy_image(so_long->mlx, so_long->player->left);
+	mlx_destroy_image(so_long->mlx, so_long->player->right);
+	mlx_destroy_window(so_long->mlx, so_long->win);
 	free_map(so_long);
 	free(so_long->player);
+	free(so_long->enemy->img);
+	free(so_long->enemy);
 	exit(EXIT_SUCCESS);
 	return(0);
 }
@@ -71,11 +86,9 @@ int		animation(t_so_long *so_long)
 			&& so_long->enemy->ep[1] == so_long->player->pp[1])
 			game_over(so_long);
 		if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 1
-			// && so_long->enemy->ep[0] > 0
 			&& so_long->map[so_long->enemy->ep[1]][so_long->enemy->ep[0] - 1] == '0')
 			put_img(so_long, so_long->enemy->ep[0] - 1, so_long->enemy->ep[1], so_long->sprite_img.floor);
 		if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 0
-			// && so_long->enemy->ep[0] < so_long->gw - 1
 			&& so_long->map[so_long->enemy->ep[1]][so_long->enemy->ep[0] + 1] == '0')
 			put_img(so_long, so_long->enemy->ep[0] + 1, so_long->enemy->ep[1], so_long->sprite_img.floor);
 		put_img(so_long, so_long->enemy->ep[0], so_long->enemy->ep[1], so_long->sprite_img.floor);
