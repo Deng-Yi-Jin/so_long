@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:08:35 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:22:22 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:33:03 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ int	parse_map(t_so_long *so_long)
 		if (so_long->gw == -1)
 			so_long->gw = ft_strlen(line);
 		if (so_long->lst_map == NULL)
-		{
-			so_long->lst_map = ft_lstnew(ft_strdup(line));
-			so_long->lst_map->head = so_long->lst_map;
-		}
+			add_lst(so_long, line);
 		else
 			ft_lstadd_back(&so_long->lst_map, ft_lstnew(ft_strdup(line)));
 		free(line);
@@ -81,13 +78,6 @@ bool	check_map(t_so_long *so_long, int line_count)
 	current_node = so_long->lst_map->head;
 	while (current_node)
 	{
-		trim = ft_strtrim(current_node->content, "\n");
-		if (ft_strlen(trim) != (so_long->gw - 1))
-		{
-			free(trim);
-			return (false);
-		}
-		free(trim);
 		if (i == 0 || i == line_count - 1)
 		{
 			if (!check_wall(current_node))
@@ -117,7 +107,7 @@ bool	convert_node(t_so_long *so_long)
 		return (false);
 	current_node = so_long->lst_map->head;
 	i = 0;
-	while(current_node)
+	while (current_node)
 	{
 		so_long->map[i] = ft_strdup(current_node->content);
 		if (!so_long->map[i])

@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/13 03:18:12 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:29:34 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ bool	convert_node(t_so_long *so_long);
 bool	check_char(t_so_long *so_long);
 void	put_img(t_so_long *so_long, int x, int y, void *img);
 void	put_img_to_map(t_so_long *so_long);
+void	add_lst(t_so_long *so_long, char *line);
 
 //enemy
 void	get_enemy_pos(t_so_long *so_long);

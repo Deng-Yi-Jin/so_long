@@ -6,11 +6,17 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:58:06 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/13 02:15:40 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:29:17 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	add_lst(t_so_long *so_long, char *line)
+{
+	so_long->lst_map = ft_lstnew(ft_strdup(line));
+	so_long->lst_map->head = so_long->lst_map;
+}
 
 bool	check_char(t_so_long *so_long)
 {
