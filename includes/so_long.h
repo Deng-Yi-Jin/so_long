@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/18 14:04:11 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:35:19 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include "sprite_type.h"
-# include "../lib/mlx_linux/mlx.h"
+// # include "../lib/mlx_linux/mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -32,13 +32,18 @@
 # define A 0
 # define D 2
 # define S 1
-// # define ESC 53
+# define ESC 53
 
-# define UP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
-# define ESC 65307
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
+
+// # define UP 119
+// # define DOWN 115
+// # define LEFT 97
+// # define RIGHT 100
+// # define ESC 65307
 
 # define BUFFER_SIZE 42
 # define BPX 50

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 02:23:55 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:48:03 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:22:25 by djin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	game_win(t_so_long *so_long)
 	free(so_long->enemy->img);
 	free(so_long->enemy);
 	mlx_destroy_window(so_long->mlx, so_long->win);
-	mlx_destroy_display(so_long->mlx);
 	free(so_long->mlx);
 	exit(EXIT_SUCCESS);
 }
@@ -89,7 +88,6 @@ void	game_over(t_so_long *so_long)
 	free(so_long->enemy->img);
 	free(so_long->enemy);
 	mlx_destroy_window(so_long->mlx, so_long->win);
-	mlx_destroy_display(so_long->mlx);
 	free(so_long->mlx);
 	exit(EXIT_SUCCESS);
 }
