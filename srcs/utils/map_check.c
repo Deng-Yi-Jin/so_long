@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:57:35 by djin              #+#    #+#             */
-/*   Updated: 2024/04/17 22:48:37 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:06:30 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,29 @@ bool	check_collectible(t_so_long *so_long)
 		line++;
 	}
 	return (false);
+}
+
+bool	check_column_row(t_so_long *so_long)
+{
+	int	i;
+
+	i = 0;
+	while (so_long->map[0][i])
+	{
+		if (so_long->map[0][i] != '1')
+			break ;
+		i++;
+	}
+	if (i <= 5)
+		return (false);
+	i = 0;
+	while (so_long->map[i] != NULL)
+	{
+		if (so_long->map[i][0] != '1')
+			break ;
+		i++;
+	}
+	if (i <= 5)
+		return (false);
+	return (true);
 }

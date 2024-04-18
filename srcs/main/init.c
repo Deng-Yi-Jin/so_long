@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:01:26 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:48:20 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:05:15 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ void	init_map(int argc, char **argv, t_so_long *so_long)
 	line_count = parse_map(so_long) - 1;
 	if (!check_map(so_long, line_count))
 		error("Invalid map");
-	printf("map is valid\n");
 	if (!convert_node(so_long))
 		error_free("Fail to convert node", so_long);
+	if (!check_column_row(so_long))
+		error_free("Invalid column or row", so_long);
+	if (!check_same_length(so_long))
+		error_free("Not same length", so_long);
 	if (!check_char(so_long))
 		error_free("Invalid char", so_long);
 }

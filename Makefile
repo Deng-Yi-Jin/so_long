@@ -18,7 +18,7 @@ SRCS_FILES = $(addprefix $(MAIN_DIR)/, game.c main.c init.c) \
 						 $(addprefix $(DEBUG_DIR)/, debug.c) \
 						 $(addprefix $(HOOK_DIR)/, hook.c movement.c) \
 						 $(addprefix $(ENF_DIR)/, error.c free.c) \
-						 $(addprefix $(UTILS_DIR)/, map_utils.c map_utils2.c map_check.c) \
+						 $(addprefix $(UTILS_DIR)/, map_utils.c map_utils2.c map_check.c map_check2.c) \
 						 $(addprefix $(GNL_DIR)/, get_next_line.c) \
 
 SRCS = $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))

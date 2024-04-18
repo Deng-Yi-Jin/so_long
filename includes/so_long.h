@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:27:23 by djin              #+#    #+#             */
-/*   Updated: 2024/04/17 22:29:34 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:04:11 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ bool	check_wall(t_node *map);
 bool	check_inside(t_node *map);
 int		map_height(t_node *map);
 bool	check_collectible(t_so_long *so_long);
+bool	check_column_row(t_so_long *so_long);
+
+//map_check2
+bool	check_same_length(t_so_long *so_long);
 
 //error
 void	error(char *str);
