@@ -6,7 +6,7 @@
 /*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 01:33:53 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/17 22:23:33 by geibo            ###   ########.fr       */
+/*   Updated: 2024/04/20 01:47:42 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	get_enemy_pos(t_so_long *so_long)
 			break ;
 		line++;
 	}
-	so_long->enemy->sign = 1;
+	so_long->enemy->direction = 1;
 }

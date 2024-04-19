@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djin <djin@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: geibo <geibo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:38:36 by geibo             #+#    #+#             */
-/*   Updated: 2024/04/18 14:22:32 by djin             ###   ########.fr       */
+/*   Updated: 2024/04/20 01:47:42 by geibo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	close_win(t_so_long *so_long)
 
 static void	move_enemy(t_so_long *so_long)
 {
-	if (so_long->enemy->sign == 1)
+	if (so_long->enemy->direction == 1)
 	{
 		if (so_long->map[so_long->enemy->ep[1]] \
 		[so_long->enemy->ep[0] + 1] == '0')
@@ -63,7 +63,7 @@ static void	move_enemy(t_so_long *so_long)
 		else
 		{
 			so_long->enemy->ep[0]--;
-			so_long->enemy->sign = 0;
+			so_long->enemy->direction = 0;
 		}
 	}
 	else
@@ -75,7 +75,7 @@ static void	move_enemy(t_so_long *so_long)
 		else
 		{
 			so_long->enemy->ep[0]++;
-			so_long->enemy->sign = 1;
+			so_long->enemy->direction = 1;
 		}
 	}
 	so_long->enemy->img_index = 0;
@@ -89,12 +89,12 @@ void	animation_condition(t_so_long *so_long)
 		&& so_long->enemy->ep[1] == so_long->player->pp[1])
 		game_over(so_long);
 	if (so_long->enemy->img_index == 0
-		&& so_long->enemy->sign == 1
+		&& so_long->enemy->direction == 1
 		&& so_long->map[so_long->enemy->ep[1]] \
 			[so_long->enemy->ep[0] - 1] == '0')
 		put_img(so_long, so_long->enemy->ep[0] - 1, \
 		so_long->enemy->ep[1], so_long->sprite_img.floor);
-	if (so_long->enemy->img_index == 0 && so_long->enemy->sign == 0
+	if (so_long->enemy->img_index == 0 && so_long->enemy->direction == 0
 		&& so_long->map[so_long->enemy->ep[1]] \
 			[so_long->enemy->ep[0] + 1] == '0')
 		put_img(so_long, so_long->enemy->ep[0] + 1, \
